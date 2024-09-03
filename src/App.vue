@@ -27,8 +27,8 @@ return {
       To-Do List
     </h1>
       <ul>
-        <li v-for="item in TodoItems", key="item.id">
-          <todo-item label="item.label" :done="item.done"></todo-item>
+        <li v-for="item in TodoItems"  v-bind:key="item.id">
+          <todo-item v-bind:label="item.label" v-bind:done="item.done"></todo-item>
         </li>
       </ul>
   </div>

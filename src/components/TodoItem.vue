@@ -10,6 +10,10 @@ import {nanoid} from "nanoid";
 
 export default{
     props:{
+        id:{
+            required: true,
+            type: String,
+        },
         label:{
             required:true,
             type:String,
