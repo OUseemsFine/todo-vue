@@ -1,5 +1,5 @@
 <template>
-<form @submit.prevent="onSubmit">
+<form @submit.prevent.lazy.trim="onSubmit">
     <label for="new-todo-input">
         What needs to be done?
     </label>
