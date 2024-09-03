@@ -1,5 +1,5 @@
 <template>
-<form @submit.prevent.lazy.trim="onSubmit">
+<form @submit.prevent="onSubmit">
     <label for="new-todo-input">
         What needs to be done?
     </label>
@@ -8,7 +8,7 @@
     id="new-todo-input"
     name="new-todo"
     autocomplete="off"
-    v-model="label"
+    v-model.lazy.trim="label"
     />
     <button type="submit">
         Add
@@ -18,10 +18,10 @@
 
 <script>
 export default{
-    method:{
+    methods:{
         onSubmit(){
-
-            console.log('Label value: ', this.label);
+            this.$emit("todo-added", this.label);
+            this.label="";
         },
     },
     data(){

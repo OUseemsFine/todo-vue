@@ -19,6 +19,12 @@ return {
 ],
 };
   },
+
+  methods:{
+     addTodo(todoLabel){
+      this.TodoItems.push({id: "todo-" + nanoid(), label: todoLabel, done: false});
+     },
+  },
 };
 
 </script>
@@ -28,7 +34,7 @@ return {
     <h1>
       To-Do List
     </h1>
-    <todo-form></todo-form>
+    <todo-form @todo-added="addTodo"></todo-form>
       <ul>
         <li v-for="item in TodoItems"  v-bind:key="item.id">
           <todo-item
