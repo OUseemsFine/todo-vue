@@ -1,11 +1,13 @@
 <script>
 import TodoItem from './components/TodoItem.vue';
 import { nanoid } from 'nanoid';
+import TodoForm from './components/TodoForm.vue';
+
 
 export default {
   name: "app",
   components: {
-    TodoItem,
+    TodoItem, TodoForm,
   },
   data(){
 return {
@@ -26,9 +28,14 @@ return {
     <h1>
       To-Do List
     </h1>
+    <todo-form></todo-form>
       <ul>
         <li v-for="item in TodoItems"  v-bind:key="item.id">
-          <todo-item v-bind:label="item.label" v-bind:done="item.done"></todo-item>
+          <todo-item
+          v-bind:label="item.label" 
+          v-bind:id="item.id"
+          v-bind:done="item.done">
+        </todo-item>
         </li>
       </ul>
   </div>

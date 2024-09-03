@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import {nanoid} from "nanoid";
 
 export default{
     props:{
@@ -26,7 +25,6 @@ export default{
     data(){
         return {
             isDone: this.done,
-            id: "todo-" + nanoid(),
         };
     },
 }
