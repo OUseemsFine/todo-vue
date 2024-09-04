@@ -28,7 +28,18 @@ return {
      updateDoneStatus(toDoId) {
   const toDoToUpdate = this.TodoItems.find((item) => item.id === toDoId)
   toDoToUpdate.done = !toDoToUpdate.done
+},
+
+deleteToDo(toDoId) {
+  const itemIndex = this.TodoItems.findIndex((item) => item.id === toDoId);
+  this.TodoItems.splice(itemIndex, 1);
+},
+
+editToDo(toDoId, newLabel) {
+  const toDoToEdit = this.TodoItems.find((item) => item.id === toDoId);
+  toDoToEdit.label = newLabel;
 }
+
 
   },
 
@@ -55,11 +66,14 @@ return {
       <ul aria-labelledby="list-summary" class="stack-large">
         <li v-for="item in TodoItems"  v-bind:key="item.id">
           <todo-item
-          v-bind:label="item.label" 
-          v-bind:id="item.id"
-          v-bind:done="item.done"
-          @checkbox-changed="updateDoneStatus(item.id)">
-        </todo-item>
+            :label="item.label"
+            :done="item.done"
+            :id="item.id"
+            @checkbox-changed="updateDoneStatus(item.id)"
+            @item-deleted="deleteToDo(item.id)"
+            @item-edited="editToDo(item.id, $event)">
+          </todo-item>
+
         </li>
       </ul>
   </div>
